@@ -1,0 +1,42 @@
+plugins {
+    id "com.android.application"
+    id "com.google.gms.google-services" // FlutterFire Configuration
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Flutter Gradle Plugin
+}
+
+android {
+    namespace = "com.example.rental_app" // Adjust to your actual package name
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+    
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8" // Ensure jvmTarget is a string
+    }
+
+    defaultConfig {
+        applicationId "com.example.rentapp" // Unique App ID
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode flutter.versionCode
+        versionName flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug // Use Debug signing for now
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+// Ensure this is at the bottom of the file
+apply plugin: 'com.google.gms.google-services'
